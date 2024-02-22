@@ -17,7 +17,7 @@
         echo($result3);
         echo("<br>");
     //Task 4
-        $strg = "Десять негритят пошли купаться в море\n";
+        $strg = "Десять негритят пошли купаться в море";
         $words = explode(" ", $strg);
         echo("Task 4: $strg\n");
         echo("Fourth word: $words[3]");
@@ -35,7 +35,7 @@
         echo("<br>");
     //Task 7
         echo("Task 7: $strg\n");
-        $length = strlen($strg);
+        $length = mb_strlen($strg);
         echo("String length: $length\n");
         echo("<br>");
     //Task 8
@@ -64,8 +64,8 @@
         echo("Task 10: ");
         $str1 = "three";
         $str2 = "три";
-        $length1 = strlen($str1);
-        $length2 = strlen($str2);
+        $length1 = mb_strlen($str1);
+        $length2 = mb_strlen($str2);
         if ($length1 > $length2) {
             echo("three > три");
             echo("<br>");
