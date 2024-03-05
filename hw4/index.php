@@ -32,13 +32,17 @@ $secondArr = [
 echo "<br>";
 var_dump(array_diff($firstArr, $secondArr));
 echo "<br>";
+// Task 5
 var_dump(array_diff($secondArr, $firstArr));
 echo "<br>";
+// Task 6
 var_dump(array_intersect($secondArr, $firstArr));
 echo "<br>";
+// Task 7
 $difElems = array_merge(array_diff($secondArr, $firstArr), array_diff($firstArr, $secondArr));
 var_dump($difElems);
 echo "<br>";
+// Task 8
 $firstArr2 = [
     'one' => 1,
     'two' => [
@@ -72,6 +76,7 @@ foreach ($firstArr2 as $value) {
 }
 var_dump($secElem);
 echo "<br>";
+// Task 9
 $totalElem = 0;
 $totalElem += count($firstArr2);
 foreach ($firstArr2 as $value) {
@@ -81,6 +86,7 @@ foreach ($firstArr2 as $value) {
 }
 echo($totalElem);
 echo "<br>";
+// Task 10
 $sumArr = array_sum($firstArr2);
 foreach ($firstArr2 as $value) {
     if (is_array($value)) {
@@ -88,3 +94,4 @@ foreach ($firstArr2 as $value) {
     }
 }
 echo($sumArr);
+
