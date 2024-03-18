@@ -80,9 +80,6 @@ echo "<br>";
 
 //Task 2
 function Task2($str) {
-    if (!is_string($str)) {
-        return false;
-    }
     $counter = 0;
     $length = mb_strlen($str);
     for ($i = 0; $i < $length; $i++) {
@@ -95,12 +92,11 @@ function Task2($str) {
 
 $str = "BaBBababanana"; // 5
 //$str = 1635;
-$result = Task2($str);
-if ($result === false) {
+if (!is_string($str)) {
     echo "false";
 } else {
     echo "Количество букв b в строке: ";
-    echo $result;
+    echo Task2($str);
 }
 echo "<br>";
 
@@ -108,34 +104,14 @@ echo "<br>";
 function Task3($array) {
     $sum = 0;
     foreach ($array as $value) {
-        if (is_array($value)) {
-            $sum += Task3($value);
-        } elseif (is_numeric($value)) {
+        if (is_numeric($value)) {
             $sum += $value;
         }
     }
     return $sum;
 }
-//$array = [1, 2, 5, 7, 9, 12]; //36
+$array = [1, 2, 5, 7, 9, 12]; //36
 //$array = ["one", "two", "four", true, false];
-$array = [
-    1,
-    2,
-    [
-        3,
-        4,
-        [
-            5,
-            6,
-            [
-                7,
-                8,
-            ],
-        ],
-        9,
-    ],
-    10,
-]; //55
 echo "Сумма значений: ";
 echo Task3($array);
 echo "<br>";
@@ -143,19 +119,12 @@ echo "<br>";
 // Task 4
 function Task4($bigSide, $smallSide) {
     if (is_numeric($bigSide) && is_numeric($smallSide)) {
-        /*$horizontalCount = floor($bigSide / $smallSide);
-        $squareBig = $bigSide ** 2;
-        $count = $horizontalCount ** 2;
-        $squareSmall = ($smallSide ** 2);
-        $square = $squareSmall * $count;
-        var_dump(($squareBig - $square) / $squareSmall);
-        return $count;*/
-        $count = ($bigSide / $smallSide) ** 2;
+        $count = floor($bigSide / $smallSide) ** 2;
         return $count;
     }
 }
 $bigSide = 10;
-$smallSide = 3;
+$smallSide = 4;
 echo "Можно вписать ";
 echo Task4($bigSide, $smallSide);
 echo " квадратов меньшего размера";
