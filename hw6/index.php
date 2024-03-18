@@ -3,42 +3,8 @@
 
 abstract class BaseClass
 {
-    protected $numPlus;
-    protected $comNum;
-    protected $devNum;
-    protected $numMinus;
-    protected $remDiv;
-    protected $numSqrt;
-    protected $numMultiply;
     protected $number;
     protected $power;
-
-    public function getPlus() {
-        return $this->numPlus;
-    }
-
-    public function getCom() {
-        return $this->comNum;
-    }
-
-    public function getDev() {
-        return $this->devNum;
-    }
-
-    public function getMinus() {
-        return $this->numMinus;
-    }
-
-    public function getRemDiv() {
-        return $this->remDiv;
-    }
-
-    public function getSqrtMin() {
-        return $this->numSqrt;
-    }
-    public function getMultiply() {
-        return $this->numMultiply;
-    }
 
     public function getPower() {
         return $this->power;
@@ -46,29 +12,6 @@ abstract class BaseClass
 
     public function getNumber() {
         return $this->number;
-    }
-    public function setPlus($numPlus) {
-        $this->numPlus = $numPlus;
-    }
-
-    public function setCom($comNum) {
-        $this->comNum = $comNum;
-    }
-
-    public function setDev($devNum) {
-        $this->devNum = $devNum;
-    }
-
-    public function setRemDiv($remDiv) {
-        $this->remDiv = $remDiv;
-    }
-
-    public function setSqrtMin($numSqrt) {
-        $this->numSqrt = $numSqrt;
-    }
-
-    public function setMinus($numMinus) {
-        $this->numMinus = $numMinus;
     }
 
     public function setNumber($number) {
@@ -80,41 +23,70 @@ abstract class BaseClass
     }
 
     abstract public function calcPow();
-    abstract public function calcPlus();
-    abstract public function calcMinus();
 }
 class Task1 extends BaseClass
 {
     public function calcPow() {
         return $this->number ** $this->power;
     }
-
-    public function calcPlus() {
-        return $this->number + $this->numPlus;
-    }
-
-    public function calcMinus() {
-        return $this->number - $this->numMinus;
-    }
 }
 
 class Plus extends BaseClass
 {
-    public function calcPow() {
-        return $this->number ** $this->power;
+    protected $numPlus;
+
+    public function getPlus() {
+        return $this->numPlus;
+    }
+
+    public function setPlus($numPlus) {
+        $this->numPlus = $numPlus;
     }
 
     public function calcPlus() {
         return $this->number + $this->numPlus;
     }
 
+    public function calcPow() {
+        return $this->number ** $this->power;
+    }
+
+}
+
+class Minus extends BaseClass
+{
+    protected $numMinus;
+
+    public function getMinus() {
+        return $this->numMinus;
+    }
+
+    public function setMinus($numMinus) {
+        $this->numMinus = $numMinus;
+    }
+
     public function calcMinus() {
         return $this->number - $this->numMinus;
     }
+
+    public function calcPow() {
+        return $this->number ** $this->power;
+    }
 }
 
+// Task 2
 class Compas extends Plus
 {
+    protected $comNum;
+
+    public function setCom($comNum) {
+        $this->comNum = $comNum;
+    }
+
+    public function getCom() {
+        return $this->comNum;
+    }
+
     public function comp() {
         if ($this->numPlus > $this->comNum) {
             return $this->numPlus;
@@ -126,30 +98,36 @@ class Compas extends Plus
     }
 }
 
-class Devide extends Plus
+class Divide extends Plus
 {
-    public function dev() {
-        return $this->numPlus / $this->devNum;
+    protected $divNum;
+
+    public function setDiv($divNum) {
+        $this->divNum = $divNum;
+    }
+
+    public function getDiv() {
+        return $this->divNum;
+    }
+
+    public function div() {
+        return $this->numPlus / $this->divNum;
     }
 }
 
-class Minus extends BaseClass
-{
-    public function calcPow() {
-        return $this->number ** $this->power;
-    }
 
-    public function calcPlus() {
-        return $this->number + $this->numPlus;
-    }
-
-    public function calcMinus() {
-        return $this->number - $this->numMinus;
-    }
-}
 
 class RemDiv extends Minus
 {
+    protected $remDiv;
+    public function getRemDiv() {
+        return $this->remDiv;
+    }
+
+    public function setRemDiv($remDiv) {
+        $this->remDiv = $remDiv;
+    }
+
     public function remainDiv() {
         return $this->numMinus % $this->remDiv;
     }
@@ -157,12 +135,22 @@ class RemDiv extends Minus
 
 class SqrtMin extends Minus
 {
+    protected $numSqrt;
+
+    public function setSqrtMin($numSqrt) {
+        $this->numSqrt = $numSqrt;
+    }
+
+    public function getSqrtMin() {
+        return $this->numSqrt;
+    }
+
     public function sqrtMinus() {
         return sqrt($this->numMinus - $this->numSqrt);
     }
 }
 
-class Multiply
+final class Multiply
 {
     private $num;
     private $numMultiply;
@@ -222,11 +210,11 @@ echo "Сравнение: ";
 echo $res4->comp();
 echo "<br>";
 
-$res5 = new Devide();
+$res5 = new Divide();
 $res5->setPlus(50);
-$res5->setDev(5);
+$res5->setDiv(5);
 echo "Деление: ";
-echo $res5->dev();
+echo $res5->div();
 echo "<br>";
 
 $res6 = new RemDiv();
