@@ -1,0 +1,24 @@
+{
+  "name": "vendor_name/hw6",
+  "autoload": {
+    "psr-4": {
+      "src\\": "src/"
+    }
+  },
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "cyberxvoida",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
